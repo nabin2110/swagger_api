@@ -1,0 +1,185 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "\n\nHeader -> api_key :  \n\n",
+    "version": "1.0.0",
+    "title": "Laravel API Swagger CRUD Operation"
+  },
+  "host": "127.0.0.1:8000",
+  "basePath": "/api",
+  "paths": {
+    "/post": {
+        "post": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Create Post",
+          "operationId": "createPost",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "title",
+              "in": "formData",
+              "description": "Enter title",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "in": "formData",
+              "description": "Enter description",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Post created successfully"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Get All Posts",
+          "operationId": "getAllPosts",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of posts"
+            }
+          }
+        }
+      },
+      "/post/{id}": {
+        "get": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Get Single Post",
+          "operationId": "getSinglePost",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the post to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Post data"
+            },
+            "404": {
+              "description": "Post not found"
+            }
+          }
+        },
+        "put":{
+            "tags":[
+                "Post"
+            ],
+            "summary":"Update single item",
+            "operationId":"update single post",
+            "produces":[
+                "application/json"
+            ],
+            "security":[
+                {
+                    "APIKeyHeader":[]
+                }
+            ],
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "description":"Enter an id of an item which you want to update",
+                    "required":true,
+                    "schema":{
+                        "type":"string"
+                    }
+                },
+                {
+                    "name":"title",
+                    "in":"formData",
+                    "description":"Enter title",
+                    "required":true,
+                    "schema":{
+                        "type":"string"
+                    }
+                },
+                {
+                    "name":"description",
+                    "in":"formData",
+                    "description":"Enter description",
+                    "required":true,
+                    "schema":{
+                        "type":"string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                  "description": "Update success"
+                },
+                "404": {
+                  "description": "Post not found"
+                }
+              }
+        }
+      }
+  },
+  "securityDefinitions": {
+    "APIKeyHeader": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "api-key"
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ]
+}
