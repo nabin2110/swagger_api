@@ -153,8 +153,63 @@
                 }
               }
         }
+      },
+      "/category": {
+        "post": {
+          "tags": [
+            "Category"
+          ],
+          "summary": "Create Post",
+          "operationId": "createPost",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "title",
+              "in": "formData",
+              "description": "Enter title",
+              "required": true,
+              "type": "array",
+              "items":{
+                "type":"string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Post created successfully"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Get All Posts",
+          "operationId": "getAllPosts",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "List of posts"
+            }
+          }
+        }
       }
   },
+
   "securityDefinitions": {
     "APIKeyHeader": {
       "type": "apiKey",
