@@ -16,5 +16,5 @@ Route::get('/get-data',function(){
     }
 });
 
-Route::get('/calender/create',[EventController::class,'create'])->name('frontend.event.create');
-Route::post('/calender/store',[EventController::class,'store'])->name('calendar.store');
+Route::get('/calendar/create',[EventController::class,'create'])->name('frontend.event.create');
+Route::post('/calendar/store',[EventController::class,'store'])->name('calendar.store');
